@@ -5,6 +5,8 @@ derived_file_type:
 - java_precompiled
 threadsafe: True
 auto_id_policy: default
+vpc_access_connector:
+  name: projects/food-composer/locations/us-east1/connectors/gae-connector
 api_version: 'user_defined'
 handlers:
 - url: /.*
