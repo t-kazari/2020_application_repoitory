@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "food-composer-front",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

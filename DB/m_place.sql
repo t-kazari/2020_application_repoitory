@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS m_place (
     id INT(11) NOT NULL AUTO_INCREMENT
-    , place_cd VARCHAR(6) NOT NULL
+    , place_cd VARCHAR(4) NOT NULL
     , place_nm VARCHAR(16) NOT NULL
     , prefecture_cd VARCHAR(6) NOT NULL
     , created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

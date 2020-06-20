@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+title food-composer-front
+
+package "food-composer-front/src/app" {
+
+  file "AppModule"
+  file "AppRoutingModule"
+  [AppComponent4Set]
+
+  folder "composer" {
+
+    folder "composer/composer" {
+      [ComposerComponent4Set]
+    }
+    file "ComposerModule" 
+
+  }
+  
+  folder "home" {
+
+    folder "home/home" {
+      [HomeComponent4Set]
+    }
+    file "HomeModule" 
+
+  }
+
+  folder "login" {
+
+    folder "login/login" {
+      [LoginComponent4Set]
+    }
+    file "LoginModule" 
+
+  }
+
+  folder "shared" {
+
+    folder "shared/header" {
+      [HeaderComponent4Set]
+    }
+    folder "shared/sidebar" {
+      [SidebarComponent4Set]
+    }
+    file "SharedModule" 
+
+  }
+}
+
+AppModule <-- ComposerModule
+AppModule <-- HomeModule
+AppModule <-- LoginModule
+AppModule <-- SharedModule 
+
+@enduml

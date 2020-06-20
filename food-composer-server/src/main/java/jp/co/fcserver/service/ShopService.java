@@ -36,17 +36,17 @@ public class ShopService extends AbstractService {
 	 * @param stationCd
 	 * @return
 	 */
-	public List<Shop> find(String genreCd, String tasteCd, String prefectureCd, String placeCd, String stationCd) {
+	public List<Shop> find(String genreCd, String tasteCd, String prefectureCd, String placeCd) {
 
 		LOG.info("start shop service");
 
 		SendingToEntityInf bean = new SendingToShop();
-		convertToPartialMatchString(bean, genreCd, tasteCd, prefectureCd, placeCd, stationCd);
+		convertToPartialMatchString(bean, genreCd, tasteCd, prefectureCd, placeCd);
 		String[] prms = bean.getParameters();
 
 		LOG.info("end shop service");
 
-		return repository.find(prms[0], prms[1], prms[2], prms[3], prms[4]);
+		return repository.find(prms[0], prms[1], prms[2], prms[3]);
 
 	}
 

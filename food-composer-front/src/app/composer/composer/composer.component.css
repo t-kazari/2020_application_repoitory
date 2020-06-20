@@ -1,0 +1,25 @@
+.body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #D2E2B0;
+    height: 120px;
+}
+
+.middle {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    height: 740px;
+    background-color: #CCA2A2;
+}
+
+.main {
+    flex: 1;
+    overflow-y: scroll;
+}

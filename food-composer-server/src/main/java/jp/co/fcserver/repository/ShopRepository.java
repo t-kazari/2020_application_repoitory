@@ -10,9 +10,14 @@ import jp.co.fcserver.domain.Shop;
 
 public interface ShopRepository extends JpaRepository<Shop, String> {
 
-	@Query(value = "SELECT * FROM Shop WHERE janreCd LIKE :janreCd AND tasteCd LIKE :tasteCd AND prefectureCd LIKE :prefectureCd AND placeCd LIKE :placeCd AND stationCd LIKE :stationCd")
-	List<Shop> find(@Param("janreCd") String janreCd, @Param("tasteCd") String tasteCd,
-			@Param("prefectureCd") String prefectureCd, @Param("placeCd") String placeCd,
-			@Param("stationCd") String stationCd);
+	@Query(value = "SELECT sh FROM Shop sh "
+			+ "LEFT OUTER JOIN Taste te ON sh.tasteCd = te.tasteCd "
+			+ "LEFT OUTER JOIN Place pl ON sh.placeCd = pl.placeCd "
+			+ "WHERE te.genreCd LIKE :genreCd "
+			+ "AND sh.tasteCd LIKE :tasteCd "
+			+ "AND pl.prefectureCd LIKE :prefectureCd "
+			+ "AND sh.placeCd LIKE :placeCd")
+	List<Shop> find(@Param("genreCd") String genreCd, @Param("tasteCd") String tasteCd,
+			@Param("prefectureCd") String prefectureCd, @Param("placeCd") String placeCd);
 
 }

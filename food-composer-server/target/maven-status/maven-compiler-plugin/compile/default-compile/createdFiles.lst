@@ -1,10 +1,10 @@
 jp\co\fcserver\domain\Shop.class
 jp\co\fcserver\repository\ShopRepository.class
-jp\co\fcserver\WarInitializerApplication.class
 jp\co\fcserver\config\Constants.class
-jp\co\fcserver\config\AppConfig.class
 jp\co\fcserver\api\ShopAPI.class
-jp\co\fcserver\service\ShopService.class
-jp\co\fcserver\util\AuthUtils.class
 jp\co\fcserver\config\EmptyToNullStringDeserializer.class
 jp\co\fcserver\exception\ComposerException.class
+jp\co\fcserver\WarInitializerApplication.class
+jp\co\fcserver\config\AppConfig.class
+jp\co\fcserver\service\ShopService.class
+jp\co\fcserver\util\AuthUtils.class

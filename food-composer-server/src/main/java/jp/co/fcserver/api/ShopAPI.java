@@ -46,10 +46,11 @@ public class ShopAPI extends AbstractAPI {
 	 * 店舗検索API
 	 * @param json
 	 * @return
+	 * @throws ComposerException
 	 */
 	@PostMapping
 	@RequestMapping(value = "/find")
-	public ResponseEntity<?> findShop(@RequestBody String json) {
+	public ResponseEntity<?> findShop(@RequestBody String json) throws ComposerException {
 
 		LOG.info("start shop api");
 		Map<String, Object> returnMap = new HashMap<String, Object>();
@@ -78,9 +79,8 @@ public class ShopAPI extends AbstractAPI {
 		String tasteCd = (String)jsonMap.get("tasteCd");
 		String prefectureCd = (String)jsonMap.get("prefectureCd");
 		String placeCd = (String)jsonMap.get("placeCd");
-		String stationCd = (String)jsonMap.get("stationCd");
 
-		List<Shop> shops = service.find(genreCd, tasteCd, prefectureCd, placeCd, stationCd);
+		List<Shop> shops = service.find(genreCd, tasteCd, prefectureCd, placeCd);
 
 		returnMap.put("successFlg", true);
 		returnMap.put("entity", shops);

@@ -25,7 +25,7 @@ public class Place implements Serializable {
 	@Column(name = "place_nm")
 	private String placeNm;
 
-	@Column(name = "prefecrture_cd")
+	@Column(name = "prefecture_cd")
 	private String prefectureCd;
 
 	@Column(name = "created_at")

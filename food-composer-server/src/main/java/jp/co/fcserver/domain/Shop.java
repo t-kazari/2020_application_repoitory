@@ -28,9 +28,6 @@ public class Shop implements Serializable {
 	@Column(name = "place_cd")
 	private String placeCd;
 
-	@Column(name = "station_cd")
-	private String stationCd;
-
 	@Column(name = "taste_cd")
 	private String tasteCd;
 
@@ -51,7 +48,6 @@ public class Shop implements Serializable {
 				.append(", shopCd=").append(this.shopCd)
 				.append(", shopNm=").append(this.shopNm)
 				.append(", placeCd=").append(this.placeCd)
-				.append(", stationCd=").append(this.stationCd)
 				.append(", tasteCd=").append(this.tasteCd)
 				.append(", url=").append(this.url);
 

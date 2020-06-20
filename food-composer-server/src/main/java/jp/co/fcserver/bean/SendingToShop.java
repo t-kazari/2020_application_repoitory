@@ -18,20 +18,17 @@ public class SendingToShop implements SendingToEntityInf {
 
 	private String placeCd;
 
-	private String stationCd;
-
 	@Override
 	public void setParameter(String... args) {
 		this.setGenreCd(args[0]);
 		this.setTasteCd(args[1]);
 		this.setPrefectureCd(args[2]);
 		this.setPlaceCd(args[3]);
-		this.setStationCd(args[4]);
 	}
 
 	@Override
 	public String[] getParameters() {
-		String[] parameters = {this.getGenreCd(), this.getTasteCd(), this.getPrefectureCd(), this.getPlaceCd(), this.getStationCd()};
+		String[] parameters = {this.getGenreCd(), this.getTasteCd(), this.getPrefectureCd(), this.getPlaceCd()};
 		return parameters;
 	}
 

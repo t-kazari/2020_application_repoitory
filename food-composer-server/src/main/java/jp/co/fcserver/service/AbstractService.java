@@ -30,7 +30,8 @@ public class AbstractService {
 			}
 			list.add(phrase);
 		}
-		bean.setParameter((String[])list.toArray());
+
+		bean.setParameter(list.toArray(new String[list.size()]));
 
 	}
 

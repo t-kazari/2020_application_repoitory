@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.fcserver.config.Constants;
 import jp.co.fcserver.domain.Taste;
+import jp.co.fcserver.exception.ComposerException;
 import jp.co.fcserver.service.TasteService;
 
 @RestController
@@ -36,7 +37,7 @@ public class TasteAPI extends AbstractAPI {
 
 	@PostMapping
 	@RequestMapping(value = "/find")
-	public ResponseEntity<?> findTaste(@RequestBody String json) {
+	public ResponseEntity<?> findTaste(@RequestBody String json) throws ComposerException {
 
 		LOG.info("start taste api");
 		Map<String, Object> returnMap = new HashMap<String, Object>();

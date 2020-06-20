@@ -1,0 +1,28 @@
+#userInfo {
+    font-size: 16px;
+    height: 80px;
+    margin-top: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    background-color: tomato;
+    border: 1px solid #d88b8b;
+    font-family: cursive;
+}
+
+#contents {
+    margin-top: 40px;
+    padding-right: 40px;
+    background-color: tomato;
+    border: 1px solid #d88b8b;
+    font-family: cursive;
+}
+
+.sideButton {
+    background-color: tomato;
+    border: none;
+    width: 170px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

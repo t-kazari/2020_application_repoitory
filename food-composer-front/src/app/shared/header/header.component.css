@@ -1,0 +1,20 @@
+#toIndex{
+   text-align: right;
+   margin-top: 10px; 
+   margin-right: 30px;
+   font-family: cursive;
+}
+
+#pageTitle {
+    margin-top: -10px;
+    margin-left: 30px;
+    font-size: 40px;
+    font-family: cursive;
+}
+
+#logoutButton {
+    margin-left: 40px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

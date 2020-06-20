@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "food-composer-front": {
+      "hosting": {
+        "food-composer-front": [
+          "food-composer-front"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "food-composer-front"
+  }
+}
