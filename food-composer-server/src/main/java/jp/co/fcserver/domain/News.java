@@ -20,7 +20,7 @@ public class News implements Serializable {
 	private int id;
 
 	@Column(name = "news_category")
-	private Integer NewsCategory;
+	private Integer newsCategory;
 
 	@Column(name = "contents")
 	private String contents;
@@ -39,7 +39,7 @@ public class News implements Serializable {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("id=").append(this.id)
-			.append(", newsCategory=").append(this.NewsCategory)
+			.append(", newsCategory=").append(this.newsCategory)
 			.append(", contents=").append(this.contents)
 			.append(", registedDate=").append(this.registedDate);
 

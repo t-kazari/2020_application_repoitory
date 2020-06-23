@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../service/home.service';
+import { News } from 'src/app/models/news';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,15 @@ export class HomeComponent implements OnInit {
 
   public title: string = 'Food Composer TOP PAGE'
 
+  newsList: News[];
+
   constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.homeService.request();
+    this.newsList = this.homeService.request();
+    if(this.newsList == null) {
+      window.console.log("no data");
+    }
   }
 
 
