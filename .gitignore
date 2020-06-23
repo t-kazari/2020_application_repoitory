@@ -1,4 +1,4 @@
 /.metadata/
 /food-composer-server/src/main/resources/application.properties
-/food-composer-server/target/
+/food-composer-server/target/food-composer-server-0-1-0-snapshot/WEB-INF/classes/application.properties
 /ドキュメント類/archive/*
