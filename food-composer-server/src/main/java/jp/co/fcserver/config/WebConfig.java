@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://food-composer-front.web.app")
+                .allowedOrigins("https://food-composer-front.web.app", "61.24.161.23")
                 .allowedMethods("GET","POST","PUT", "DELETE","OPTIONS")
                 .allowedHeaders("Origin", "X-Requested-With", "Content-Type", "Accept")
                 .allowCredentials(false).maxAge(3600);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteService } from '../service/route.service';
-import { AuthService } from '../service/auth.service';
+import { RouteService } from 'src/app/service/route.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,11 +10,17 @@ import { Router } from "@angular/router";
 })
 export class SidebarComponent implements OnInit {
 
-  userName = this.authService.getUserInfo();
+  userName = "";
 
   constructor(private router: Router, private authService: AuthService, private routeService: RouteService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.user$.subscribe(
+      user => {
+        this.userName = user.email
+      }
+    )
+  }
 
   toComposer(): void {
     this.routeService.toComposer();

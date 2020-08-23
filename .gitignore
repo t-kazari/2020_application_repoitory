@@ -2,3 +2,7 @@
 /food-composer-server/src/main/resources/application.properties
 /food-composer-server/target/**
 /ドキュメント類/archive/*
+/.food-composer-front/.firebase/**
+/.food-composer-front/dist/**
+/.food-composer-front/e2e/**
+/.food-composer-front/node_modules/**

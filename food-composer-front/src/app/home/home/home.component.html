@@ -8,9 +8,9 @@
         </div>
         <div class="main">
             <div id="news">
-                <table class="newsTable" *ngFor='let news of newsList'>
+                <table class="newsTable">
                     <tr><th colspan="2">RecentNews</th></tr>
-                    <tr><td>{{news.registedDate}}</td><td>{{contents}}</td></tr>
+                    <tr *ngFor="let news of newsList"><td>{{news.registedDate}}</td><td>{{news.contents}}</td></tr>
                 </table>        
             </div>
         </div>
