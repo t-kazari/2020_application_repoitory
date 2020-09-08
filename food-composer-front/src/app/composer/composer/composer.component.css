@@ -46,7 +46,7 @@
 .responseComposer {
     background-color: rgb(255, 255, 255);
     display: block;
-    width: 300px;
+    width: 400px;
     margin-top: 100px;
     margin-left: 100px;
     padding: 10px;
@@ -67,7 +67,10 @@
 
 .genreList {
     display: inline-block;
+    margin: 3px;
 }
+
+
 
 #composerInput {
     display: flex;
@@ -92,6 +95,10 @@
     height: 40px;
     background-color: black;
     color: white;
+}
+
+.shopModal {
+  background-color: lawngreen;
 }
 
 .footer {

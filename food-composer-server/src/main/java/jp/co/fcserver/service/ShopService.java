@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import jp.co.fcserver.bean.SendingToEntityInf;
 import jp.co.fcserver.bean.SendingToShop;
 import jp.co.fcserver.domain.Shop;
+import jp.co.fcserver.dto.ShopDto;
 import jp.co.fcserver.exception.ComposerException;
 import jp.co.fcserver.repository.ShopRepository;
 
@@ -36,7 +37,7 @@ public class ShopService extends AbstractService {
 	 * @param stationCd
 	 * @return
 	 */
-	public List<Shop> find(String genreCd, String tasteCd, String prefectureCd, String placeCd) {
+	public List<ShopDto> find(String genreCd, String tasteCd, String prefectureCd, String placeCd) {
 
 		LOG.info("start shop service");
 

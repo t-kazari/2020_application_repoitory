@@ -4,11 +4,9 @@ import { ComposerComponent } from './composer/composer.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
-    ComposerComponent
+    ComposerComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   exports: [
-    ComposerComponent
+    ComposerComponent,
   ]
 })
 export class ComposerModule { }

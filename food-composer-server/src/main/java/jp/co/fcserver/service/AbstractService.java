@@ -26,7 +26,7 @@ public class AbstractService {
 
 		for(String phrase : phrases) {
 			if(Strings.isNullOrEmpty(phrase)) {
-				phrase = "%" + phrase + "%";
+				phrase = "%";
 			}
 			list.add(phrase);
 		}

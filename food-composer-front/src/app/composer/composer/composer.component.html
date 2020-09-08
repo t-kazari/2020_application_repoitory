@@ -13,35 +13,39 @@
                 </div>
                 <div id="composerPart">
                     <ng-container *ngFor="let comment of comments">
-                        <div *ngIf="isResponseComment(comment); then response; else request">
+                        <div [ngSwitch]="typeOfComment(comment)">
+                          <div *ngSwitchCase="'RESPONSE'" class="responseComposer">
+                            {{comment.content}}<br>
+                            <div *ngFor="let bean of comment.responseList">
+                              <div class="genreList" >{{bean.beanCd}}:{{bean.beanNm}}</div>
+                            </div>
+                          </div>
+                          <div *ngSwitchCase="'END'" class="responseComposer">
+                            {{comment.content}}<br>
+                            <div *ngFor="let bean of comment.responseList">
+                              <div class="genreList" (click)="openModal(bean)" >・{{bean.beanNm}}</div>
+                            </div>
+                          </div>
+                          <div *ngSwitchCase="'REQUEST'" class="requestComposer">
+                            {{comment.content}}
+                          </div>
                         </div>
-                        <ng-template #response>
-                            <div class="responseComposer">
-                                {{comment.content}}<br>
-                                <div *ngFor="let bean of comment.responseList">
-                                    <div class="genreList" >{{bean.beanCd}}:{{bean.beanNm}}</div>
-                                </div>
-                            </div>
-                        </ng-template>
-                        <ng-template #request>
-                            <div class="requestComposer">
-                                {{comment.content}}
-                            </div>
-                        </ng-template>
                     </ng-container>
                 </div>
-                
+                <app-modal [modalBean]='modalBean' class="shopModal" *ngIf="isOpenModal">
+                </app-modal>
             </div>
+
             <div *ngIf="startFlg" class="footer">
                 <form (submit)="sendChoice(content)">
                     <div id="composerInput">
                         <input id="inputBox" [(ngModel)]="content"
-                        name="comment" 
+                        name="comment"
                         placeholder="表示されるコードを入力してくださいな（例　000）"/>
                         <button id="inputButton">POST</button>
                     </div>
-                </form>    
-            </div>            
+                </form>
+            </div>
         </div>
     </div>
 </div>

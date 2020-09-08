@@ -12,6 +12,10 @@ export class RouteService {
     this.router.navigate(["composer"]);
   }
 
+  toRegist(): void {
+    this.router.navigate(["regist"]);
+  }
+
   toIndex(): void {
     this.router.navigate(["home"]);
   }

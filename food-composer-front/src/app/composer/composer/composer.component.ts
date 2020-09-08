@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ComposerService } from 'src/app/service/composer.service';
+import { ModalService } from 'src/app/service/modal.service';
+import { AuthService } from 'src/app/service/auth.service';
+
 import { Post } from 'src/app/models/post';
 import { Genre } from 'src/app/models/genre'
 import { Taste } from 'src/app/models/taste';
 import { Prefecture } from 'src/app/models/prefecture';
 import { Place } from 'src/app/models/place';
 import { Shop } from 'src/app/models/shop';
-import { AuthService } from 'src/app/service/auth.service';
 import { ComposerBean } from 'src/app/models/composer-bean';
 import { Comment } from 'src/app/models/comment';
 import { ResponseComment } from 'src/app/models/response-comment';
 import { MyComment } from 'src/app/models/my-comment';
+import { CommentType } from 'src/app/models/comment-type.enum';
 
 @Component({
   selector: 'app-composer',
@@ -36,9 +40,10 @@ export class ComposerComponent implements OnInit {
   shopFlg : boolean;
   endFlg: boolean;
   post: Post;
+  modalBean: ComposerBean;
+  isOpenModal: boolean;
 
-
-  constructor(private authService: AuthService, private composerService: ComposerService) { }
+  constructor(private authService: AuthService, private composerService: ComposerService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.startFlg = false;
@@ -48,6 +53,7 @@ export class ComposerComponent implements OnInit {
     this.placeFlg = false;
     this.shopFlg = false;
     this.endFlg = false;
+    this.isOpenModal = false;
     this.post = new Post(null, null, null, null, null);
     this.authService.user$.subscribe(
       user => user.getIdToken(true).then(
@@ -63,7 +69,7 @@ export class ComposerComponent implements OnInit {
     this.startFlg = true;
     this.genreList.push(new Genre("000", "指定無し"));
     this.genreList.push(new Genre("001", "ラーメン"));
-    this.comments.push(new ResponseComment("何が食べたい?", true, this.genreList));
+    this.comments.push(new ResponseComment("何が食べたい?", CommentType.RESPONSE, this.genreList));
   }
 
   sendChoice(content: string): void {
@@ -71,7 +77,9 @@ export class ComposerComponent implements OnInit {
     if(content) {
 
       this.comments.push(new MyComment(content));
-      
+
+      this.content = "";
+
       if(!this.genreFlg && content === '000'){
         this.genreFlg = true;
         this.tasteFlg = true;
@@ -79,7 +87,7 @@ export class ComposerComponent implements OnInit {
         this.prefectureList.push(new Prefecture("13", "東京都"));
         this.prefectureList.push(new Prefecture("28", "大阪府"));
         this.prefectureList.push(new Prefecture("30", "兵庫県"));
-        this.comments.push(new ResponseComment("都道府県はどうするん？", true, this.prefectureList));
+        this.comments.push(new ResponseComment("都道府県はどうするん？", CommentType.RESPONSE, this.prefectureList));
       } else if(!this.genreFlg && content !== '000') {
         this.genreFlg = true;
         this.post.genreCd = content;
@@ -95,7 +103,7 @@ export class ComposerComponent implements OnInit {
         this.prefectureList.push(new Prefecture("13", "東京都"));
         this.prefectureList.push(new Prefecture("28", "大阪府"));
         this.prefectureList.push(new Prefecture("30", "兵庫県"));
-        this.comments.push(new ResponseComment("都道府県はどうするん？", true, this.prefectureList));
+        this.comments.push(new ResponseComment("都道府県はどうするん？", CommentType.RESPONSE, this.prefectureList));
       }
 
       else if(!this.prefectureFlg && content === '00') {
@@ -131,10 +139,11 @@ export class ComposerComponent implements OnInit {
     this.composerService.getTaste(post).subscribe(
       data => {
         if(data.successFlg) {
+          this.tasteList.push(new Taste('000000', '指定無し'));
           for(var i = 0; i < data.entity.length; i++) {
             this.tasteList.push(new Taste(data.entity[i].tasteCd, data.entity[i].tasteNm));
           }
-          this.comments.push(new ResponseComment("どんな味がいい?", true, this.tasteList));
+          this.comments.push(new ResponseComment("どんな味がいい?", CommentType.RESPONSE, this.tasteList));
         }
       },
       error => {
@@ -148,10 +157,11 @@ export class ComposerComponent implements OnInit {
     this.composerService.getPlace(post).subscribe(
       data => {
         if(data.successFlg) {
+          this.placeList.push(new Place('0000', '指定無し'));
           for(var i = 0; i < data.entity.length; i++) {
             this.placeList.push(new Place(data.entity[i].placeCd, data.entity[i].placeNm));
           }
-          this.comments.push(new ResponseComment("場所はどの辺？", true, this.placeList));
+          this.comments.push(new ResponseComment("場所はどの辺？", CommentType.RESPONSE, this.placeList));
         }
       },
       error => {
@@ -165,9 +175,9 @@ export class ComposerComponent implements OnInit {
       data => {
         if(data.successFlg) {
           for(var i = 0; i < data.entity.length; i++) {
-            this.shopList.push(new Shop(data.entity[i].shopCd, data.entity[i].shopNm, data.entity[i].url));
+            this.shopList.push(new Shop(data.entity[i].shopCd, data.entity[i].shopNm, data.entity[i].genreNm, data.entity[i].tasteNm, data.entity[i].prefectureNm, data.entity[i].placeNm, data.entity[i].url));
           }
-          this.comments.push(new ResponseComment("こんな店どうや？", true, this.shopList));
+          this.comments.push(new ResponseComment("こんな店どうや？（店名をクリック！）", CommentType.END, this.shopList));
         }
       },
       error => {
@@ -175,15 +185,29 @@ export class ComposerComponent implements OnInit {
       }
     );
   }
-  
-  
-  isResponseComment(comment: Comment) {
-    if(comment.responseFlg) {
-      return true;
-    } else {
-      return false;
-    }
 
+  async openModal(bean: ComposerBean) {
+    const res = await this.modalService.openModal(bean);
+    if(!res) {
+      return;
+    }
+  }
+
+  closeModal(bean: ComposerBean) {
+    this.isOpenModal = false;
+  }
+
+  typeOfComment(comment: Comment): string {
+    switch(comment.commentType) {
+      case CommentType.REQUEST:
+        return "REQUEST";
+      case CommentType.RESPONSE:
+        return "RESPONSE";
+      case CommentType.END:
+        return "END";
+      default:
+        return "";
+    }
   }
 
 }

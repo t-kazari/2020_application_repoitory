@@ -1,0 +1,80 @@
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #D2E2B0;
+  height: 120px;
+}
+
+.middle {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  height: 740px;
+  background-color: #CCA2A2;
+}
+
+.main {
+  flex: 1;
+}
+
+.registForm {
+  width: 1000px;
+  margin: 40px 0px 50px 70px;
+  padding: 10px;
+  background-color:white;
+  border-radius: 5px;
+  font-family: cursive;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
+}
+
+#registFormTitle {
+  width: 1000px;
+  height: 60px;
+  margin: -10px 0px 10px -10px;
+  padding: 15px;
+  font-size: xx-large;
+  flex: auto;
+  background-color: rgb(40, 148, 40);
+  border-radius: 5px 5px 0px 0px;
+}
+.registInput {
+  margin: 20px 0px 0px 10px;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+#registButtonAria {
+  text-align: right;
+}
+
+.inputBox {
+  width: 400px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.validationText {
+  margin-left: 30px;
+  color: rgb(219, 8, 8);
+}
+
+#registButton {
+  width: 120px;
+  height: 60px;
+  margin: 20px 20px 10px 0px;
+  padding: 10px;
+  font-size: x-large;
+  background-color: rgb(48, 48, 184);
+  color: aliceblue;
+  border-radius: 10px;
+  border-color: honeydew;
+  text-align: center;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.3));
+}

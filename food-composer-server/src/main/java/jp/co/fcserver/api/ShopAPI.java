@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.fcserver.config.Constants;
 import jp.co.fcserver.domain.Shop;
+import jp.co.fcserver.dto.ShopDto;
 import jp.co.fcserver.exception.ComposerException;
 import jp.co.fcserver.service.ShopService;
 
@@ -80,7 +81,7 @@ public class ShopAPI extends AbstractAPI {
 		String prefectureCd = (String)jsonMap.get("prefectureCd");
 		String placeCd = (String)jsonMap.get("placeCd");
 
-		List<Shop> shops = service.find(genreCd, tasteCd, prefectureCd, placeCd);
+		List<ShopDto> shops = service.find(genreCd, tasteCd, prefectureCd, placeCd);
 
 		returnMap.put("successFlg", true);
 		returnMap.put("entity", shops);

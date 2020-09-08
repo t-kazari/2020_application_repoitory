@@ -1,0 +1,55 @@
+<div class="body">
+  <div class="header">
+      <app-header [title]='title'></app-header>
+  </div>
+  <div class="middle">
+      <div class="sidebar">
+          <app-sidebar></app-sidebar>
+      </div>
+      <div class="main">
+        <form #registForm="ngForm" (ngSubmit)="regist(registForm)" class="registForm">
+          <div id="registFormTitle">RegistShop</div>
+          <div class="registInput">
+            <label for="shopName">ShopName</label><span class="validationText" *ngIf="!isShopNameSet">ミスってるよ</span><br>
+            <input ngModel name="shopName" class="inputBox" type="text" placeholder="shop name" />
+          </div>
+          <div class="registInput">
+            <label for="genreName">Genre</label><span class="validationText" *ngIf="!isGenreSet">ミスってるよ</span><br>
+            <select ngModel name="genreCd" (change)="getTastes($event.target.value)" class="inputBox">
+              <option [value]=""></option>
+              <option *ngFor="let genre of genreList" [value]="genre.beanCd">{{genre.beanNm}}</option>
+            </select>
+          </div>
+          <div class="registInput">
+            <label for="tasteName">Taste</label><span class="validationText" *ngIf="!isTasteSet">ミスってるよ</span><br>
+            <select ngModel name="tasteCd" class="inputBox">
+              <option [value]=""></option>
+              <option *ngFor="let taste of tasteList" [value]="taste.beanCd">{{taste.beanNm}}</option>
+            </select>
+          </div>
+          <div class="registInput">
+            <label for="prefectureName">Prefecture</label><span class="validationText" *ngIf="!isPrefectureSet">ミスってるよ</span><br>
+            <select ngModel name="prefectureCd" (change)="getPlaces($event.target.value)" class="inputBox">
+              <option [value]=""></option>
+              <option *ngFor="let prefecture of prefectureList" [value]="prefecture.beanCd">{{prefecture.beanNm}}</option>
+            </select>
+          </div>
+          <div class="registInput">
+            <label for="placeName">Aria</label><span class="validationText" *ngIf="!isPlaceSet">ミスってるよ</span><br>
+            <select ngModel name="placeCd" class="inputBox">
+              <option [value]=""></option>
+              <option *ngFor="let place of placeList" [value]="place.beanCd">{{place.beanNm}}</option>
+            </select>
+          </div>
+          <div class="registInput">
+            <label for="url">URL</label><span class="validationText" *ngIf="!isUrlSet">ミスってるよ</span><br>
+            <input ngModel name="url" class="inputBox" type="text" placeholder="URL"/>
+          </div>
+          <div id="registButtonAria">
+            <button id="registButton">Regist</button>
+          </div>
+        </form>
+
+      </div>
+  </div>
+</div>
