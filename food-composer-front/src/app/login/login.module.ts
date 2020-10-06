@@ -4,7 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 
 
-
+/**
+ * ログインモジュール
+ */
 @NgModule({
   declarations: [
     LoginComponent

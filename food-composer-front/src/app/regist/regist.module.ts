@@ -4,7 +4,9 @@ import { RegistComponent } from './regist/regist.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
-
+/**
+ * 登録モジュール
+ */
 @NgModule({
   declarations: [
     RegistComponent

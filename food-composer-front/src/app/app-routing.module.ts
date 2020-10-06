@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home/home.component';
 import { ComposerComponent } from './composer/composer/composer.component';
 import { RegistComponent } from './regist/regist/regist.component';
 
+//ルーティングの設定
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

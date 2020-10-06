@@ -17,6 +17,9 @@ import { HomeModule } from './home/home.module';
 import { ComposerModule } from './composer/composer.module';
 import { RegistModule } from './regist/regist.module';
 
+/**
+ * トップモジュール
+ */
 @NgModule({
   declarations: [
     AppComponent,

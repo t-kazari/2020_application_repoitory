@@ -10,9 +10,11 @@ import { Genre } from 'src/app/models/genre'
 import { Taste } from 'src/app/models/taste';
 import { Prefecture } from 'src/app/models/prefecture';
 import { Place } from 'src/app/models/place';
-import { Shop } from 'src/app/models/shop';
 import { NgForm } from '@angular/forms';
 
+/**
+ * 登録コンポーネント
+ */
 @Component({
   selector: 'app-regist',
   templateUrl: './regist.component.html',
@@ -20,7 +22,9 @@ import { NgForm } from '@angular/forms';
 })
 export class RegistComponent implements OnInit {
 
+  //ページタイトル
   title = 'RegistShop';
+
   genreList: ComposerBean[];
   tasteList: ComposerBean[];
   prefectureList: ComposerBean[];
@@ -60,6 +64,11 @@ export class RegistComponent implements OnInit {
     )
   }
 
+  /**
+   * 登録メソッド
+   * GoogleAppsScriptに新店舗データを送信する。
+   * @param registForm
+   */
   regist(registForm: NgForm): void {
 
     if(this.isSatisfiedWithForm(registForm)) {
@@ -85,6 +94,11 @@ export class RegistComponent implements OnInit {
 
   }
 
+  /**
+   * フォームチェックメソッド
+   * フォームに抜けが無いかをチェックし、すべての項目が満たされていればTRUEを返す
+   * @param form
+   */
   private isSatisfiedWithForm(form: NgForm): boolean {
 
     console.log("genreCd:" + form.value.genreCd + ", tasteCd:" + form.value.tasteCd + ", prefectureCd:" + form.value.prefectureCd + ", placeCd:" + form.value.placeCd + ", url:" + form.value.url + ", shopName:" + form.value.shopNm);
@@ -102,6 +116,10 @@ export class RegistComponent implements OnInit {
 
   }
 
+  /**
+   * 味取得メソッド
+   * @param genreCd
+   */
   getTastes(genreCd: string): ComposerBean[] {
 
     console.log("genreCd is " + genreCd);
@@ -122,6 +140,10 @@ export class RegistComponent implements OnInit {
     return this.tasteList;
   }
 
+  /**
+   * 場所取得メソッド
+   * @param prefectureCd
+   */
   getPlaces(prefectureCd: string): ComposerBean[] {
 
     console.log("prefectureCd is " + prefectureCd);

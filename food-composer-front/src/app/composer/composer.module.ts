@@ -4,6 +4,9 @@ import { ComposerComponent } from './composer/composer.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
+/**
+ * コンポーザーモジュール
+ */
 @NgModule({
   declarations: [
     ComposerComponent,

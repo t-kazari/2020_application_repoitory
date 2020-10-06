@@ -4,6 +4,9 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
 
+/**
+ * 共通モジュール
+ */
 @NgModule({
   declarations: [
     HeaderComponent,
