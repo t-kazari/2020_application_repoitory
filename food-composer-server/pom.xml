@@ -21,7 +21,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 		<archiveClasses>true</archiveClasses>
-		<spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+		<spring.boot.version>2.5.12</spring.boot.version>
 		<google.cloud.version>0.89.0-beta</google.cloud.version>
 		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
 
